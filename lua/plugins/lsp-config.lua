@@ -57,6 +57,7 @@ return {
       lspconfig.ts_ls.setup({
         capabilities = capabilities,
         single_file_support = false,
+        root_dir = lspconfig.util.root_pattern("package.json"),
       })
       ---- deno
       lspconfig.denols.setup({
