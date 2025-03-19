@@ -41,6 +41,7 @@ return {
           "ts_ls",
           "denols",
           "solidity_ls",
+          "taplo",
         },
       })
     end,
@@ -81,6 +82,12 @@ return {
       })
       -- bash
       lspconfig.bashls.setup({})
+      -- toml
+      lspconfig.taplo.setup({
+        filetypes = { "toml" },
+        root_dir = lspconfig.util.root_pattern("*.toml", ".git"),
+      })
+      -- remappings
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
       vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
