@@ -9,7 +9,7 @@ return {
   config = function()
     require("neo-tree").setup({
       window = {
-        position = "left"
+        position = "left",
       },
       filesystem = {
         follow_current_file = {
@@ -22,8 +22,16 @@ return {
           hide_gitignored = false,
         },
       },
+      event_handlers = {
+        {
+          event = "neo_tree_buffer_enter",
+          handler = function()
+            vim.cmd([[ setlocal winfixwidth ]])
+          end,
+        },
+      },
       source_selector = {
-        winbar = true, -- Shows source selector on the window bar
+        winbar = true, 
       },
     })
     vim.keymap.set("n", "<C-b>", ":Neotree filesystem reveal left<CR>", {})
